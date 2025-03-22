@@ -1,8 +1,14 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public virtual void Idle() { }
+    [Header("General")]
+    public Transform _target;
+    public NavMeshAgent _navMeshAgent;
+    public Animator _enemyAnimator;
 
-    public virtual void Walk() { }
+    protected virtual void Idle() { }
+
+    protected virtual void Walk() { }
 }

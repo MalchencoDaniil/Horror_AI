@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class EnemyChaseState : State
 {
+    private Enemy _enemy;
+
+    private void Awake()
+    {
+        _enemy = GetComponent<Enemy>();
+    }
+
     public override void Enter()
     {
-        Debug.Log("Я вошел в состояние преследования");
+        _enemy._enemyAnimator.SetBool("CanRun", true);
     }
 
     public override void Exit()
     {
-        Debug.Log("Я вышел из состояния преследования");
+        _enemy._enemyAnimator.SetBool("CanRun", false);
     }
 
-    public override void Update()
+    public override void UpdateState()
     {
-        Debug.Log("Я в состоянии преследования");
+        _enemy._navMeshAgent.SetDestination(_enemy._target.position);
     }
 }

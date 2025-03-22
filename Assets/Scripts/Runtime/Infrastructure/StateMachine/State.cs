@@ -17,7 +17,7 @@ public abstract class State : MonoBehaviour
 
     }
 
-    public virtual void Update()
+    public virtual void UpdateState()
     {
 
     }

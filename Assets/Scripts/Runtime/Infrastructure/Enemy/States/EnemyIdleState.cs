@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class EnemyIdleState : State
 {
+    private Enemy _enemy;
+
+    private void Awake()
+    {
+        _enemy = GetComponent<Enemy>();
+    }
+
     public override void Enter()
     {
-        Debug.Log("Я вошел в состояние покоя");
+        _enemy._navMeshAgent.isStopped = true;
     }
 
     public override void Exit()
     {
-        Debug.Log("Я вышел из состояния покоя");
+        _enemy._navMeshAgent.isStopped = false;
     }
 
-    public override void Update()
+    public override void UpdateState()
     {
-        Debug.Log("Я в состоянии покоя");
+
     }
 }

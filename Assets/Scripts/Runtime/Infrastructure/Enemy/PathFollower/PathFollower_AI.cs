@@ -3,7 +3,7 @@ using UnityEngine;
 public class PathFollower_AI : Enemy
 {
     private StateMachine _stateMachine;
-    
+
     private EnemyIdleState _enemyIdleState;
     private EnemyWalkState _enemyWalkState;
     private EnemyChaseState _enemyChaseState;
@@ -21,7 +21,7 @@ public class PathFollower_AI : Enemy
 
     private void Update()
     {
-        _stateMachine._currentState.Update();
+        _stateMachine._currentState.UpdateState();
 
         if (Input.GetKeyDown(KeyCode.Space))
             Idle();
@@ -33,12 +33,12 @@ public class PathFollower_AI : Enemy
             Chase();
     }
 
-    public override void Idle()
+    protected override void Idle()
     {
         _stateMachine.ChangeState(_enemyIdleState);
     }
 
-    public override void Walk()
+    protected override void Walk()
     {
         _stateMachine.ChangeState(_enemyWalkState);
     }
