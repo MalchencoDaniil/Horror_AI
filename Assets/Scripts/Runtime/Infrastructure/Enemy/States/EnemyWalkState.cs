@@ -6,6 +6,8 @@ public class EnemyWalkState : State
 
     private int _currentWaypointId = 0;
 
+    internal bool _stopInPoint = false;
+
     [SerializeField]
     private WaypointPath _waypointPath;
 
@@ -35,6 +37,7 @@ public class EnemyWalkState : State
 
         if (_distanceToPoint < _stopDistance)
         {
+            _stopInPoint = true;
             CheckWaypointID();
         }
     }
